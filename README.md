@@ -13,7 +13,7 @@
 ## Docker image 생성 후 사용
 
 ### Docker file 생성
-docker build -t haseong/bioeng-keras:0 .
+docker build -t haseong/bioeng-ml:0 .
 
 
 
