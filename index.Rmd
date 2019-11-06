@@ -29,14 +29,19 @@ description: "한국생물공학회 교육워크샵 [생물공학 x 기계학습
 ## Docker Images
 도커를 사용하기 위해서는 다른 사람이 만들어 둔 이미지를 다운로드 받아서 사용하거나 직접 Dockerfile을 편집하여 필요한 소프트웨어를 설치하고 이미지를 만들어 사용할 수 있습니다.
 
-
+```{bash, eval=F}
 docker build -t haseong/bioeng-ml:0 .
+```
 
+```{python}
+x = 10
+for i in range(10):
+  x = i
+print(x)
 
+```
 
 ![](images/01-16.PNG)
-
-
 
 
 
