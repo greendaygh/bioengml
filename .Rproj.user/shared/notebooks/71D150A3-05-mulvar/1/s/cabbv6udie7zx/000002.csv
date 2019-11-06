@@ -1,0 +1,7 @@
+"0","filter(iris, Species==""setosa"" | Species==""versicolor"") %>% dim
+"
+"1","[1]"
+"1"," 100"
+"1","   5"
+"1","
+"

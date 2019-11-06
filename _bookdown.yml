@@ -1,0 +1,12 @@
+rmd_files: ["index.Rmd"]
+repo: https://github.com/greendaygh/bioeng-ml/
+book_filename: "bioeng-ml"
+output_dir: docs
+language:
+  label:
+    fig: "FIGURE"
+    tab: "TABLE"
+  ui:
+    chapter_name: "Chapter "
+delete_merged_file: true
+

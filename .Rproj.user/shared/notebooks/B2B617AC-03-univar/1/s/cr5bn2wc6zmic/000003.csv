@@ -1,0 +1,5 @@
+"0","legend(100, 0.02, legend=c(""kid.weights""))
+"
+"2","Error in strwidth(legend, units = ""user"", cex = cex, font = text.font) : 
+  plot.new has not been called yet
+"

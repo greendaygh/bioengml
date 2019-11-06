@@ -1,0 +1,483 @@
+library(UsingR)
+
+plot(kid.weights$weight)
+
+x<-kid.weights$weight
+hist(x, br=100)
+abline(v=mean(x), col="red", lwd=3)
+
+x <- rnorm(1000, 0, 0.5)
+hist(x, br=100, xlim=c(-10,10))
+abline(v=mean(x), col="red", lwd=3)
+var(x)
+
+x <- rnorm(1000, 0, 1)
+hist(x, br=100, xlim=c(-10,10))
+abline(v=mean(x), col="red", lwd=3)
+var(x)
+
+x <- rnorm(1000, 0, 2)
+hist(x, br=100, xlim=c(-10,10))
+abline(v=mean(x), col="red", lwd=3)
+var(x)
+
+
+x <- faithful$waiting
+hist(x, br=50)
+plot(density(x))
+boxplot(x)
+
+
+x <- babies$smoke
+x <- factor(x, labels=c("never", "now", "until current", "once, quit", "unknown"))
+table(x)
+out <- table(x)
+prop <- 100*out/sum(out)
+round(prop, digits=2)
+barplot(out)
+barplot(prop)
+dotplot(out)
+dotplot(prop)
+pie(out)
+
+
+beets<-c(41, 40, 41, 42, 44, 35, 41, 36, 47, 45)
+no_beets<-c(51, 51, 50, 42, 40, 31, 43, 45)
+
+dotchart(c(beets, no_beets))
+dotchart(c(beets, no_beets), groups=factor(c(rep("beets", length(beets)), rep("no_beets", length(no_beets)))))
+
+boxplot(beets, no_beets)
+boxplot(beets, no_beets, names=c("beets", "no_beets"))
+
+
+library(MASS)
+head(michelson)
+dim(michelson)
+class(michelson)
+
+fourth <- michelson$Speed[michelson$Expt==4]
+fifth <- michelson$Speed[michelson$Expt==5]
+?density
+d4 <- density(fourth)
+d5 <- density(fifth)
+xrange <- range(c(d4$x, d5$x))
+yrange <- range(c(d4$y, d5$y))
+plot(d4, xlim=xrange, ylim=yrange, xlab="densities", main="")
+lines(d5, lty=2)
+legend(650, 0.008, legend=c("fourth", "Fifth"), lty=c(1,2))
+
+qqplot(fourth, fifth)
+ps <- seq(0.05, 0.95, by=0.05)
+x <- quantile(fourth, ps)
+y <- quantile(fifth, ps)
+plot(x, y)
+
+
+
+
+
+library(UsingR)
+class(fat)
+head(fat)
+names(fat)
+
+
+mean(fat$neck) / mean(fat$wrist)
+mean(fat$neck/fat$wrist)
+plot(x=fat$wrist, y=fat$neck)
+plot(neck~wrist, data=fat)
+plot(neck~wrist, data=fat, subset = 20 <= age & age <30 )
+plot(height~wrist, data=fat, subset = height>50 )
+plot(abdomen~neck, data=fat)
+
+
+x <- fat$wrist
+y <- fat$neck
+plot(x, y)
+abline(v = mean(x), lty=2)
+abline(h = mean(y), lty=2)
+points(mean(x), mean(y), pch=16, cex=4, col="#00000055")
+abline(lm(y~x))
+
+cor(x, y)
+
+
+
+
+x <- Animals$body
+y <- Animals$brain
+cor(x, y)
+plot(x, y)
+Animals
+cor(rank(x), rank(y))
+Arank <- Animals
+Arank$body <- rank(Arank$body)
+Arank$brain <- rank(Arank$brain)
+Arank
+
+
+ToothGrowth
+
+plot(ToothGrowth$dose, ToothGrowth$len)
+cor(ToothGrowth$dose, ToothGrowth$len)
+l <- split(ToothGrowth$len, ToothGrowth$dose)
+group_means <- c(mean(l[[1]]), mean(l[[2]]), mean(l[[3]]))
+
+points(c(0.5, 1, 2), group_means, col="red", pch=17, cex=2)
+cor(c(0.5, 1, 2), group_means)
+
+
+
+cor(SAT$salary, SAT$total)
+plot(salary~total, data=SAT, cex=2)
+points(salary~total, SAT, subset = perc < 10,  col="red", pch=15, cex=2)
+points(salary~total, SAT, subset = perc > 40, col="blue", pch=16, cex=2)
+abline(lm(SAT$salary~SAT$total))
+abline(lm(salary~total, SAT, subset = perc < 10),  col="red")
+abline(lm(salary~total, SAT, subset = perc > 40),  col="blue")
+
+
+
+?lm
+out <- lm(maxrate ~ age, data=heartrate)
+out
+summary(out)
+plot(maxrate ~ age, data=heartrate)
+abline(out)
+sum(resid(out))
+res <- heartrate$maxrate - fitted(out)
+predict(out)
+head(heartrate)
+predict(out, data.frame(age=30))
+
+
+
+r1 <- c(56, 8)
+r2 <- c(2, 16)
+m1 <- rbind(r1, r2)
+
+c1 <- c(56, 2)
+c2 <- c(8, 16)
+m2 <- cbind(c1, c2)
+
+m3 <- matrix(c(56, 2, 8, 16), nrow=2)
+m4 <- matrix(c(56, 8, 2, 16), nrow=2, byrow=T)
+seatbelts <- m4
+rownames(seatbelts) <- c("buckled", "unbuckled")
+colnames(seatbelts) <- c("buckled", "unbuckled")
+seatbelts
+
+
+seatbelts
+margin.table(seatbelts, margin=1)
+margin.table(seatbelts, margin=2)
+rowSums(seatbelts)
+colSums(seatbelts)
+rowMeans(seatbelts)
+colMeans(seatbelts)
+addmargins(seatbelts)
+
+## grades
+table(grades$prev, grades$grade)
+tab <- with(grades, table(prev, grade))
+margin.table(tab, 1)
+margin.table(tab, 2)
+
+
+seatbelts.prop <- seatbelts
+seatbelts.prop <- seatbelts/sum(seatbelts)
+seatbelts.prop
+
+tab <- prop.table(with(grades, table(prev, grade)))
+round(tab, 4)
+
+
+head(Fingerprints)
+tail(Fingerprints)
+idx <- !is.na(Fingerprints$count)
+Fingerprints[idx,]
+whorls <- rep(Fingerprints$Whorls[idx], Fingerprints$count[idx])
+loops <- rep(Fingerprints$Loops[idx], Fingerprints$count[idx])
+table(whorls, loops)
+xtabs(count ~ Whorls + Loops, Fingerprints)
+xtabs(count ~ ., Fingerprints)
+
+
+
+barplot(seatbelts)
+barplot(seatbelts, beside=T)
+barplot(seatbelts, beside=T, legend=rownames(seatbelts))
+barplot(seatbelts, beside=T, legend=rownames(seatbelts), col=c("red", "blue"))
+
+titanic <- as.data.frame(Titanic)
+xtabs(Freq ~ Survived + Class, data=titanic, subset=Sex=="Female")
+xtabs(Freq ~ Survived + Class, data=titanic)
+
+xtabs(Freq ~ Sex, titanic)
+tbl <- xtabs(Freq ~ Sex + Survived, titanic)
+mosaicplot(tbl)
+
+
+
+tbl <- xtabs(Freq ~ Survived + Class, data=titanic)
+Survived <- rep(titanic$Survived, titanic$Freq)
+Survived <- ordered(Survived)
+Class <- rep(titanic$Class, titanic$Freq)
+Class <- ordered(Class)
+Class
+?ordered
+cor(as.numeric(Survived), as.numeric(Class), method="kendall")
+barplot(tbl, beside=T, legend=rownames(tbl))
+barplot(tbl, beside=T, col=c("blue", "red"))
+legend(1, 600, legend = c("Survived", "Not survived"), fill=c("blue", "red"), bty="n")
+
+
+f <- Freq ~ Survived + Class
+tbl <- xtabs(f, titanic, subset=(Sex=="Female"))
+summary(tbl)
+
+
+
+head(babies)
+b <- within(babies, {
+  gestation[gestation==999] <- NA
+  wt[wt == 999] <- NA
+})
+babies$smoke
+b2 <- within(b, {
+  smoke = factor(smoke)
+  levels(smoke) = list(
+    "never" = 0, 
+    "smoke now" = 1, 
+    "until current pregnancy" = 2,
+    "once did, not now" = 3)
+})
+
+fit <- lm(gestation~smoke, b2)
+summary(fit)
+boxplot(gestation~smoke, b2)
+
+fit <- lm(wt~smoke, b2)
+summary(fit)
+boxplot(wt~smoke, b2)
+
+## merge
+b3 <- subset(b2, {smoke=="smoke now"}, c(id, gestation, age, wt, smoke))
+b4 <- subset(b2, {age<25}, c(id, gestation, age, wt, smoke))
+head(b3)
+head(b4)
+b.in <- merge(b3, b4, by.x="id", by.y="id", all=FALSE)
+b.out <- merge(b3, b4, by.x="id", by.y="id", all=TRUE)
+
+
+# apply and sweep
+head(babies)
+bsub <- subset(babies, select=c(gestation, wt, dwt))
+hist(bsub$gestation, br=100)
+hist(bsub$wt, br=100)
+hist(bsub$dwt, br=100)
+tmp <- within(bsub, {
+  gestation[gestation==999]<-NA
+  dwt[dwt==999]<-NA
+})
+
+
+bcmp <- subset(tmp, complete.cases(tmp), select=c(gestation, wt, dwt))
+hist(bcmp$gestation, br=100)
+hist(bcmp$wt, br=100)
+hist(bcmp$dwt, br=100)
+
+head(bcmp)
+bcenter <- sweep(bcmp, 2, apply(bcmp, 2, mean))
+bz <- sweep(bcenter, 2, apply(bcmp, 2, sd), "/")
+head(bz)
+bcenter[1,1]/apply(bcmp, 2, sd)[1]
+hist(bz$gestation, br=100)
+hist(bz$wt, br=100)
+hist(bz$dwt, br=100)
+
+
+
+head(iris)
+
+plot(iris$Sepal.Length, iris$Sepal.Width, pch=as.numeric(iris$Species), cex=1.2)
+legend(6.1, 4.4, levels(iris$Species), cex=1.5, pch=1:3)
+
+fm <- Sepal.Width ~ Sepal.Length
+plot(fm, iris, pch=as.numeric(Species))
+legend(6.5, 4.4, levels(iris$Species), cex=1.5, pch=1:3, bty="n")
+dat <- split(iris, iris$Species)
+class(dat)
+abline(lm(fm, dat$setosa), lty=1)
+abline(lm(fm, dat$versicolor), lty=2)
+abline(lm(fm, dat$virginica), lty=3)
+
+
+c93 <- subset(Cars93, select=c(Model, Price, MPG.highway, Weight))
+head(c93)
+c93 <- transform(c93, price=cut(Price, c(0, 15, 30, 75), labels=c("cheap", "affordable", "expensive")))
+c93 <- within(c93, price<-cut(Price, c(0, 15, 30, 75), labels=c("cheap", "affordable", "expensive")))
+plot(MPG.highway~Weight, c93, pch=as.numeric(price))
+legend(3000, 50, levels(c93$price), pch=1:3, bty="n")
+
+c93L <- split(c93, c93$price)
+par(mfrow=c(1,3))
+limx <- range(c93$Weight)
+limy <- range(c93$MPG.highway)
+mapply(function(x){
+  fm <- MPG.highway ~ Weight 
+  plot(fm, x, xlim=limx, ylim=limy)
+  abline(lm(fm, x))
+}, c93L)
+
+c93
+plot(MPG.highway~Weight, c93)
+plot(MPG.highway~Weight, c93, cex=(Price/sum(Price)*100))
+plot(MPG.highway~Weight, c93, cex=(Price/sum(Price)*100), col="#00000055", pch=16)
+
+pairs(c93[,c("Price", "MPG.highway", "Weight")])
+pairs(MPG.highway~Weight + Price, c93)
+
+
+head(state.x77)
+heatmap(state.x77)
+x <- sapply(as.data.frame(state.x77), rank)
+heatmap(x)
+heatmap(x, Rowv=NA, Colv=NA, scale="column", margins=c(8,6), col=rev(terrain.colors(50)))
+?RColorBrewer
+?Palettes
+library(RColorBrewer)
+display.brewer.all(n=10, exact.n=FALSE)
+display.brewer.pal(6,"Accent")
+mypalette<-brewer.pal(6,"Accent")
+heatmap(x, Rowv=NA, Colv=NA, scale="column", margins=c(8,6), col=rev(mypalette))
+
+
+## ggplot2
+library(UsingR)
+p <- ggplot(Cars93)
+# expression, boundary, no quoted variable names, no rendering yet
+p <- p + aes(x=Weight, y=MPG.highway, color=Origin) 
+# rendering (declare what should be drawn)
+p <- p + geom_point(cex=3)
+p
+
+ggplot(Cars93, aes(x=Weight, y=MPG.highway, color=Origin)) + 
+  geom_point(cex=3)
+
+ggplot(Cars93, aes(x=Weight, y=MPG.highway, color=Origin)) + 
+  geom_line(lwd=3)
+
+ggplot(Cars93, aes(x=Cylinders, y=MPG.highway)) + 
+  geom_boxplot()
+
+ggplot(Cars93, aes(x=Cylinders, y=MPG.highway)) + 
+  geom_boxplot() +
+  geom_jitter(position=position_jitter(w=0.1), alpha=.25)
+
+help(package=ggplot2)
+
+ggplot(Cars93, aes(x=Weight, y=MPG.highway, color=Origin)) +  geom_point(cex=3) +
+  geom_line(lwd=1)
+
+ggplot(Cars93, aes(x=Weight, y=MPG.highway, color=Origin)) +  geom_point(cex=3) +
+  geom_smooth(method="lm")
+
+ggplot(Cars93, aes(x=Weight, y=MPG.highway, color=Origin)) +  geom_point(cex=3) +
+  geom_smooth(method="lm", se=F)
+
+ggplot(subset(Cars93, Origin=="USA"), aes(x=Weight, y=MPG.highway, color=Origin)) + 
+  geom_point(cex=3) + geom_smooth(method="lm")
+
+ggplot(Cars93, aes(x=Price)) + 
+  geom_histogram(binwidth=5)
+
+ggplot(Cars93, aes(x=Price)) + 
+  geom_density()
+
+ggplot(Cars93, aes(x=AirBags)) + 
+  geom_histogram(stat="count")
+
+
+
+
+x <- runif(100)
+d <- density(x)
+curve(dunif, xlim=c(-1,2), ylim=c(0,1.5))
+lines(d)
+rug(x)
+
+
+n <- 100
+p <- 1/4
+x <- sample(c(0,1), size=n, replace=T, prob=c(1-p, p))
+mean(x)
+var(x)
+
+
+choose(10, 5)*(1/2)^5*(1/2)^(10-5)
+dbinom(5, size=10, prob=1/2)
+
+sum(dbinom(0:6, size=10, prob=1/2))
+pbinom(6, size=10, p=1/2)
+
+
+
+
+res = runif(50)
+hist(res, prob=TRUE, main="", col=gray(.9))
+lines(density(res),lty=2)
+curve(qunif(x), add=T)
+
+
+
+
+mu <- 100; sigma <- 16
+n <- rnorm(100, mu, sigma)
+plot(function(x){dnorm(x, mu, sigma)}, xlim=c(0, 200))
+rug(n)
+
+
+
+zstat <- function(x, mu, sigma) {
+  (mean(x) - mu) / (sigma/sqrt(length(x)))
+}
+
+M <- 100000;n <- 7
+mu <- 100; sigma <- 16
+res <- replicate(M, {
+  x <- rnorm(n, mean=mu, sd=sigma)
+  zstat(x, mu, sigma)
+})
+#qqnorm(res, main="normal, n=7")
+hist(res, prob=T, xlim=c(-4,4), ylim=c(0,0.5))
+lines(density(res))
+
+N<-80; k<-20; j <-10
+res <- replicate(10000,{
+  x <- sample(1:N, j, replace = TRUE)
+  sum(x %in% 1:k)
+})
+mytab <- table(res)/10000
+barplot(mytab)
+
+
+ctrl <- c(23, 33, 40)
+treatment <- c(19, 22, 25, 26)
+the_data <- stack(list(ctrl=ctrl, treatment=treatment))
+aggregate(values ~ ind, the_data, mean)
+
+cmbs <- combn(7,3)
+ind <- cmbs[,1]
+obs <- mean(the_data$values[ind]) - mean(the_data$values[-ind])
+
+res <- apply(cmbs, 2, function(ind){
+  mean(the_data$values[ind]) - mean(the_data$values[-ind])
+})
+
+barplot(res)
+3/35
+
+
+

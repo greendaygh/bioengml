@@ -1,0 +1,5 @@
+"0","ggplot(data=dat, aes(x=x, y=y)) +
+  geom_bar()
+"
+"2","Error: stat_count() must not be used with a y aesthetic.
+"
