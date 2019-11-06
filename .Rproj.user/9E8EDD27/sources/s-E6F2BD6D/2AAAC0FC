@@ -7,13 +7,13 @@
     "folds" : "",
     "hash" : "0",
     "id" : "2AAAC0FC",
-    "lastKnownWriteTime" : 1573045166,
-    "last_content_update" : 1573045166986,
+    "lastKnownWriteTime" : 1573045209,
+    "last_content_update" : 1573045209663,
     "path" : "C:/mydocs/2019/lectures/bioeng-ml/index.Rmd",
     "project_path" : "index.Rmd",
     "properties" : {
-        "cursorPosition" : "27,0",
-        "scrollLine" : "14"
+        "cursorPosition" : "17,0",
+        "scrollLine" : "0"
     },
     "relative_order" : 3,
     "source_on_save" : false,
