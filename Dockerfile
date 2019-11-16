@@ -44,7 +44,8 @@ RUN conda update --all \
     && conda install -y tensorflow lightgbm biopython jupyterlab pandas \
     && conda install -y matplotlib blast scikit-learn \
     && conda install -y openssl certifi cffi scikit-image \
-    && conda install -y seaborn dask pycryptodomex keras 
+    && conda install -y seaborn dask pycryptodomex keras \
+    && conda install -y xlrd 
 
 ENV PATH /opt/conda/bin:$PATH
 
