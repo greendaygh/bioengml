@@ -1,5 +1,0 @@
-"0","ggplot(x) +
-  geom_bar(stat=""count"")
-"
-"2","Error: `data` must be a data frame, or other object coercible by `fortify()`, not an integer vector
-"

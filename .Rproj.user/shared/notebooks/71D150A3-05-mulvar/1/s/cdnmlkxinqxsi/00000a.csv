@@ -1,4 +1,0 @@
-"0","mydata <- Cars93 %>% select_if(is.numeric) %>% filer(complete.cases(.))
-"
-"2","Error in filer(., complete.cases(.)) : could not find function ""filer""
-"

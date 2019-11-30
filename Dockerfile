@@ -1,26 +1,11 @@
 FROM ubuntu:18.04
 USER root
 
+## packages
 RUN apt-get update --fix-missing \
-    && apt-get install -y -qq --no-install-recommends \
-		sudo \
-		vim \
-		locales \
-		cmake \
-		build-essential \
-		net-tools \ 
-		gcc \
-		g++ \
-		openssl \
-		libgl1-mesa-glx \ 
-		wget \ 
-		bzip2 \
-		ca-certificates \
-		curl \ 
-		git \
-		pciutils \
-		unzip \
-		ssl-cert \
+    && apt-get install -y -qq --no-install-recommends sudo vim locales cmake \
+		build-essential net-tools gcc g++ openssl libgl1-mesa-glx wget \ 
+		bzip2 ca-certificates curl git pciutils unzip ssl-cert \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -36,29 +21,31 @@ RUN curl -sSLk https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_6
     && bash /tmp/miniconda.sh -u -bfp /usr/local \
     && rm -rf /tmp/miniconda.sh 
 
+## conda package installation
 RUN conda update --all \
 	&& conda config --set ssl_verify no \
     && conda config --add channels conda-forge \
     && conda config --add channels anaconda \
     && conda config --add channels bioconda \
+    && conda config --add channels biobuilds \
     && conda install -y tensorflow lightgbm biopython jupyterlab pandas \
     && conda install -y matplotlib blast scikit-learn \
     && conda install -y openssl certifi cffi scikit-image \
     && conda install -y seaborn dask pycryptodomex keras \
-    && conda install -y xlrd 
+    && conda install -y clustalw meme hyperopt theano xlrd
 
 ENV PATH /opt/conda/bin:$PATH
 
-# clean
+## clean
 RUN apt-get autoremove -y \
     && apt-get clean \
     && conda clean -i -l -t -y \
     && rm -rf /usr/local/src/*
 
-
+## add alias 
 RUN echo "alias ll='ls -al'" >> ~/.bashrc
 ENV PATH /opt/conda/envs/env/bin:$PATH
 
-WORKDIR /home/python/dev
+WORKDIR /home/bioengml/
 
 

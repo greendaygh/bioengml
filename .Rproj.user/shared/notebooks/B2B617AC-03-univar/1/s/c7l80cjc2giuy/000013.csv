@@ -1,4 +1,0 @@
-"0","abline(h=mean(wts2), col=""red"", lty=2)
-"
-"2","Error in mean(wts2) : object 'wts2' not found
-"
