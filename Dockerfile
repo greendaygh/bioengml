@@ -28,18 +28,18 @@ RUN conda update --all \
     && conda config --add channels anaconda \
     && conda config --add channels bioconda \
     && conda config --add channels biobuilds \
-    && conda install -y tensorflow==1.4.0 lightgbm biopython jupyterlab pandas \
+    && conda install -y tensorflow=1.14 numpy=1.16.4 lightgbm biopython jupyterlab pandas \
     && conda install -y matplotlib blast scikit-learn \
     && conda install -y openssl certifi cffi scikit-image \
     && conda install -y seaborn dask pycryptodomex keras \
-    && conda install -y clustalw meme hyperopt theano xlrd
+    && conda install -y clustalw meme hyperopt theano xlrd openpyxl
 
 ENV PATH /opt/conda/bin:$PATH
 
 ## clean
 RUN apt-get autoremove -y \
     && apt-get clean \
-    && conda clean -i -l -t -y \
+    && conda clean -i -t -y \
     && rm -rf /usr/local/src/*
 
 ## add alias 
