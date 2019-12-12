@@ -32,7 +32,25 @@ RUN conda update --all \
     && conda install -y matplotlib blast scikit-learn \
     && conda install -y openssl certifi cffi scikit-image \
     && conda install -y seaborn dask pycryptodomex keras \
-    && conda install -y clustalw meme hyperopt theano xlrd openpyxl
+    && conda install -y clustalw meme hyperopt theano xlrd openpyxl 
+
+RUN apt-get update --fix-missing \
+    && apt-get install -f -y ghostscript \
+                          make \
+                          latex-cjk-common \
+                          latex-cjk-chinese \
+                          texlive-full \
+                          texlive-fonts-extra \
+                          texlive-fonts-recommended \
+                          texlive-lang-all \
+                          texlive-lang-cjk \
+                          texlive-luatex \
+                          texlive-pstricks \
+                          texlive-science \
+                          texlive-xetex \
+                          texlive-bibtex-extra \
+                          poppler-utils \
+                          latexmk 
 
 ENV PATH /opt/conda/bin:$PATH
 
