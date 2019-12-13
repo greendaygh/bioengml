@@ -10,5 +10,8 @@
 %===============================================================================
 
 ((* block docclass *))
-\documentclass[11pt]{oblivoir}
+\documentclass[10pt]{oblivoir}
+\usepackage{fapapersize}
+\usefapapersize{*,*,10mm,10mm,10mm,10mm}
+\SetHangulspace{1.0}{1.0}
 ((* endblock docclass *))
