@@ -5,7 +5,7 @@ USER root
 RUN apt-get update --fix-missing \
     && apt-get install -y -qq --no-install-recommends sudo vim locales cmake \
 		build-essential net-tools gcc g++ openssl libgl1-mesa-glx wget \ 
-		bzip2 ca-certificates curl git pciutils unzip ssl-cert \
+		bzip2 ca-certificates curl git pciutils unzip ssl-cert xzdec \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -34,24 +34,8 @@ RUN conda update --all \
     && conda install -y seaborn dask pycryptodomex keras \
     && conda install -y clustalw meme hyperopt theano xlrd openpyxl 
 
-RUN apt-get update --fix-missing \
-    && apt-get install -f -y ghostscript \
-                          make \
-                          latex-cjk-common \
-                          latex-cjk-chinese \
-                          texlive-full \
-                          texlive-fonts-extra \
-                          texlive-fonts-recommended \
-                          texlive-lang-all \
-                          texlive-lang-cjk \
-                          texlive-luatex \
-                          texlive-pstricks \
-                          texlive-science \
-                          texlive-xetex \
-                          texlive-bibtex-extra \
-                          poppler-utils \
-                          latexmk 
 
+#ENV PATH /opt/conda/bin:/usr/local/texlive/2019/bin/x86_64-linux:$PATH
 ENV PATH /opt/conda/bin:$PATH
 
 ## clean
@@ -65,5 +49,10 @@ RUN echo "alias ll='ls -al'" >> ~/.bashrc
 ENV PATH /opt/conda/envs/env/bin:$PATH
 
 WORKDIR /home/bioengml/
+
+#RUN update-tlmgr-latest --update \
+#    && tlmgr --usermode init-usertree \
+#    && tlmgr repository  add http://ftp.ktug.org/KTUG/texlive/tlnet ktug \
+#    && sudo tlmgr pinning add ktug "*"
 
 
