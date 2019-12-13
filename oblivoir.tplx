@@ -11,5 +11,4 @@
 
 ((* block docclass *))
 \documentclass[11pt]{oblivoir}
-\userpackage{kotex}
 ((* endblock docclass *))
