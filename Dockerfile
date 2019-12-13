@@ -35,7 +35,6 @@ RUN conda update --all \
     && conda install -y clustalw meme hyperopt theano xlrd openpyxl 
 
 
-#ENV PATH /opt/conda/bin:/usr/local/texlive/2019/bin/x86_64-linux:$PATH
 ENV PATH /opt/conda/bin:$PATH
 
 ## clean
@@ -49,10 +48,5 @@ RUN echo "alias ll='ls -al'" >> ~/.bashrc
 ENV PATH /opt/conda/envs/env/bin:$PATH
 
 WORKDIR /home/bioengml/
-
-#RUN update-tlmgr-latest --update \
-#    && tlmgr --usermode init-usertree \
-#    && tlmgr repository  add http://ftp.ktug.org/KTUG/texlive/tlnet ktug \
-#    && sudo tlmgr pinning add ktug "*"
 
 
