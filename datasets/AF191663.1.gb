@@ -1,0 +1,49 @@
+LOCUS       AF191663                 899 bp    DNA     linear   PLN 07-NOV-1999
+DEFINITION  Opuntia bradtiana rpl16 gene; chloroplast gene for chloroplast
+            product, partial intron sequence.
+ACCESSION   AF191663
+VERSION     AF191663.1
+KEYWORDS    .
+SOURCE      chloroplast Grusonia bradtiana
+  ORGANISM  Grusonia bradtiana
+            Eukaryota; Viridiplantae; Streptophyta; Embryophyta; Tracheophyta;
+            Spermatophyta; Magnoliophyta; eudicotyledons; Gunneridae;
+            Pentapetalae; Caryophyllales; Cactineae; Cactaceae; Opuntioideae;
+            Grusonia.
+REFERENCE   1  (bases 1 to 899)
+  AUTHORS   Dickie,S.L. and Wallace,R.S.
+  TITLE     Phylogeny of the subfamily Opuntioideae (Cactaceae)
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 899)
+  AUTHORS   Dickie,S.L. and Wallace,R.S.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (28-SEP-1999) Botany, Iowa State University, 353 Bessey
+            Hall, Ames, IA 50011-1020, USA
+FEATURES             Location/Qualifiers
+     source          1..899
+                     /organism="Grusonia bradtiana"
+                     /organelle="plastid:chloroplast"
+                     /mol_type="genomic DNA"
+                     /db_xref="taxon:106976"
+                     /note="subfamily Opuntioideae; synonym: Grusonia bradtiana"
+     gene            <1..>899
+                     /gene="rpl16"
+     intron          <1..>899
+                     /gene="rpl16"
+ORIGIN
+        1 tatacattaa aggaggggga tgcggataaa tggaaaggcg aaagaaagaa aaaaatgaat
+       61 ctaaatgata taggattcca ctatgtaagg tctttgaatc atatcataaa agacaatgta
+      121 ataaagcatg aatacagatt cacacataat tatctgatat gaatctattc atagaaaaaa
+      181 gaaaaaagta agagcctccg gccaataaag actaagaggg ttggctcaag aacaaagttc
+      241 attaagagct ccattgtaga attcagacct aatcattaat caagaagcga tgggaacgat
+      301 gtaatccatg aatacagaag attcaattga aaaagatcct aatgattcat tgggaaggat
+      361 ggcggaacga accagagacc aattcatcta ttctgaaaag tgataaacta atcctataaa
+      421 actaaaatag atattgaaag agtaaatatt cgcccgcgaa aattcctttt ttattaaatt
+      481 gctcatattt tcttttagca atgcaatcta ataaaatata tctatacaaa aaaacataga
+      541 caaactatat atatatataa tatatttcaa attcccttat atatccaaat ataaaaatat
+      601 ctaataaatt agatgaatat caaagaatct attgatttag tatattatta aatgtatata
+      661 ttaattcaat attattattc tattcatttt tattcatttt caaatttata atatattaat
+      721 ctatatatta atttagaatt ctattctaat tcgaattcaa tttttaaata ttcatattca
+      781 attaaaattg aaattttttc attcgcgagg agccggatga gaagaaactc tcatgtccgg
+      841 ttctgtagta gagatggaat taagaaaaaa ccatcaacta taaccccaaa agaaccaga
+//
